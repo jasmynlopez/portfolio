@@ -114,7 +114,7 @@ section {
     align-items: center; 
     justify-content: center; 
     gap: 15rem;
-    background-image: url('/imgs/background.png');
+    background-image: url('imgs/background.png');
     background-size: cover; 
     background-position: center; 
     width: 100%; 
