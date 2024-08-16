@@ -859,7 +859,7 @@ section.hide-start {
     }
 
     .header {
-        height: 100px;
+        height: 130px;
         backdrop-filter: blur(10px);
         -webkit-mask-image: linear-gradient(to top, transparent, black 50%);
         mask-image: linear-gradient(to top, transparent, black 50%);
@@ -893,6 +893,10 @@ section.hide-start {
 
       .project-front h2 {
         font-size: 1.3rem;
+      }
+      
+      #menu-icon {
+        display: none; 
       }
       
 
