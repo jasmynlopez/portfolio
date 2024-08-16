@@ -1,5 +1,6 @@
+// TYPING ANIMATION *******************************************************************
 setTimeout(() => {
-    document.querySelector('.auto-type').style.visibility = 'visible'; // Show the text container
+    document.querySelector('.auto-type').style.visibility = 'visible'; 
     var typed = new Typed(".auto-type", {
         strings: [
             "print(&quot;Hello, World! I'm Jasmyn&quot;)",  
@@ -15,19 +16,12 @@ setTimeout(() => {
     });
 }, 6000);
 
+// INITIALLY HIDE CONTENT FOR START ANIMATION *******************************************************************
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Disable scrolling
     document.body.style.overflow = 'hidden';
-    
-    // Get all elements with the 'initial-hide' class
     const hiddenSections = document.querySelectorAll('.hide-start');
-    
-    // After 8 seconds...
     setTimeout(() => {
-      // Enable scrolling
       document.body.style.overflow = 'auto';
-      
-      // Show all initially hidden sections
       hiddenSections.forEach(section => {
         section.style.display = 'block';
         section.classList.add('.arrive')
@@ -36,6 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }, 8000);
   });
 
+// RESIZING NAVBAR TO MENU ICON *******************************************************************
 let menuIcon = document.querySelector('#menu-icon'); 
 let navBar = document.querySelector('.navbar'); 
 
@@ -57,6 +52,7 @@ window.onscroll = () => {
     }
   })
 }
+
 function adjustNavBar() {
     if (window.innerWidth > 1050) {
       if (getComputedStyle(menuIcon).display === 'block') {
@@ -67,6 +63,7 @@ function adjustNavBar() {
       }
     } 
 }
+
 adjustNavBar(); 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -78,10 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 8900);
 });
 
-
 window.addEventListener('resize', adjustNavBar);
-
-
 menuIcon.onclick = () => {
   menuIcon.classList.toggle('bx-x'); 
   navBar.classList.toggle('active');
@@ -89,9 +83,30 @@ menuIcon.onclick = () => {
   navBar.classList.add('fast');
 }
 
+// LIGHT AND DARK MODE FUNCTIONALITY *******************************************************************
+const toggle = document.getElementById('toggle'); 
+let darkMode = true; 
+toggle.style.transform = darkMode ? 'rotate(180deg)' : 'rotate(0deg)';
 
+toggle.addEventListener('click', () => {
+    if (!darkMode) { // Turn on dark mode
+      document.documentElement.style.setProperty('--bg-color', '#121212');
+        document.documentElement.style.setProperty('--transparent-bg-color', 'rgba(18, 18, 18, 0.4)');
+        document.documentElement.style.setProperty('--transparent-main-color', 'rgb(229, 203, 179, 0.4)');
+        document.documentElement.style.setProperty('--text-color', 'rgb(244, 239, 235)');
+        document.documentElement.style.setProperty('--main-color', '#e5cbb3');
+    } else { // Turn on light mode 
+      document.documentElement.style.setProperty('--bg-color', 'rgb(244, 239, 235)');
+        document.documentElement.style.setProperty('--transparent-bg-color', 'rgba(244, 239, 235, 0.1)');
+        document.documentElement.style.setProperty('--transparent-main-color', 'rgba(99, 153, 206, 0.4)');
+        document.documentElement.style.setProperty('--text-color', '#5D4037');
+        document.documentElement.style.setProperty('--main-color', '#6399ce');
+    }
+    darkMode = !darkMode; 
+})
+
+// EDUCATION RESPONSIVITY *******************************************************************
 var items = document.querySelectorAll(".ed li, .view");
-
 function isElementInViewport(el){
     var rect = el.getBoundingClientRect();
    return (
@@ -101,7 +116,6 @@ function isElementInViewport(el){
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
    );
 }
-
 function callbackFunc() {
     for(var i = 0; i < items.length; i++) {
         if (isElementInViewport(items[i])){
@@ -113,11 +127,10 @@ function callbackFunc() {
         }
     }
 }
-
 window .addEventListener("load", callbackFunc);
 window.addEventListener("scroll", callbackFunc);
 
-// NEW PROJECT 
+// PROJECT CAROUSEL RESPONSIVITY *******************************************************************
 document.addEventListener('DOMContentLoaded', () => {
   const carousel = document.querySelector('.carousel');
   const leftArrow = document.querySelector('.left-arrow');
@@ -138,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   images.forEach((img, index) => {
     const projectCard = document.createElement('div');
     projectCard.classList.add('project-card');
-    if (index === 0) projectCard.classList.add('active'); // Only the first card is active initially
+    if (index === 0) projectCard.classList.add('active'); 
 
     projectCard.innerHTML = `
       <div class="project-inner">
@@ -205,11 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-// NEW PROJECT
-
-
-
+// CONTACT FORM *******************************************************************
 const scriptURL = "https://script.google.com/macros/s/AKfycbyuUN-ZVhnZBIxwXLBiU0extg6Rq2Sme4kPJef8Dr8tgb2rPX_1IsU1IslzedHd0w-j/exec"
 const form = document.forms['contact-form']
 const modal = document.getElementById("successModal");
@@ -234,3 +243,4 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
