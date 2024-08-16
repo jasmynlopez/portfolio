@@ -7,14 +7,13 @@
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png">
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="description" content="Jasmyn Lopez Portfolio - showcasing projects, skills, and achievements.">
 </head>
 <body>
-
-    <!-- Header Design -->
+    <!-- HEADER -->
     <header class="header">
         <div class="name-container">
             <a href="#home" class="logo title-hidden">
@@ -34,8 +33,8 @@
             </a>
         </div>
 
-        <i class="bx bx-menu" id="menu-icon"></i>
-        <nav class="navbar nav-hidden">
+        <i class="bx bx-menu menu-hidden slow" id="menu-icon"></i>
+        <nav class="navbar nav-hidden slow">
             <a href="#home" class="active">Home</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
@@ -59,9 +58,8 @@
             </svg>
     </header>
 
-    <!-- Home Section Design -->
+    <!-- HOME -->
     <section class="home img-hidden" id="home">
-        <!-- <img src="background.png" alt=""> -->
         <div class="home-content" >
             <h1 class="hello-hidden" >Hello, World! I'm <span>Jasmyn.</span></h1> 
 
@@ -92,8 +90,9 @@
         </div>
     </section>
 
+    <!-- EDUCATION -->
     <section class="ed hide-start" id="education">
-        <h2 class="heading">Education</h2>
+        <h2 class="heading view">Education</h2>
         <ul>
             <li>
               <div class="ed-line"></div>
@@ -131,16 +130,20 @@
           </ul>
       </section>
 
-      <div class="proj-heading hide-start" id="projects">Projects </div>
-      <div class="sticky_parent hide-start">
-         <div class="sticky">
-           <div class="scroll_section"></div>
-         </div>
-       </div>
+      <!-- PROJECTS -->
+      <section class="projects-section view" id="projects">
+        <h2 class="heading view">Projects</h2>
+        <div class="carousel-container">
+          <div class="carousel">
+          </div>
+          <button class="arrow left-arrow">&lt;</button>
+          <button class="arrow right-arrow">&gt;</button>
+        </div>
+      </section>
 
-      
+      <!-- CONTACT -->
       <section class="contact hide-start" id="contact">
-        <h2 class="heading">Contact</h2>
+        <h2 class="heading view">Contact</h2>
         <form method="post" action="" name="contact-form">
           <div class="input-group">
             <div class="input-box">
@@ -154,7 +157,6 @@
           </div>
         </form>
       </section>
-
       <div id="successModal" class="modal">
         <div class="modal-content">
           <span class="close-btn">&times; </span>
@@ -163,6 +165,7 @@
         </div>
       </div>
 
+      <!-- FOOTER -->
       <footer class="footer hide-start">
       <div class="social">
           <a href="https://github.com/jasmynlopez" target="_blank">
@@ -191,10 +194,9 @@
         </li>
       </ul>
       <p class="copyright">
-        © Jasmyn Lopez
+        © Jasmyn Lopez 2024
       </p>
       </footer>
-    
     <script src="script.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
