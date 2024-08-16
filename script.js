@@ -30,17 +30,72 @@ document.addEventListener('DOMContentLoaded', (event) => {
       // Show all initially hidden sections
       hiddenSections.forEach(section => {
         section.style.display = 'block';
+        section.classList.add('.arrive')
       });
+
     }, 8000);
   });
 
+let menuIcon = document.querySelector('#menu-icon'); 
+let navBar = document.querySelector('.navbar'); 
 
-var items = document.querySelectorAll(".ed li");
+let sections = document.querySelectorAll('section'); 
+let navLinks = document.querySelectorAll('header nav a'); 
+
+window.onscroll = () => { 
+  sections.forEach(sec => {
+    let top = window.scrollY; 
+    let offset = sec.offsetTop - 150; 
+    let height = sec.offsetHeight; 
+    let id = sec.getAttribute('id'); 
+
+    if(top >= offset && top < offset + height){
+      navLinks.forEach(links => {
+        links.classList.remove('active'); 
+         document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+      })
+    }
+  })
+}
+function adjustNavBar() {
+    if (window.innerWidth > 1050) {
+      if (getComputedStyle(menuIcon).display === 'block') {
+        menuIcon.style.display = 'none';
+      } 
+      else {
+        menuIcon.style.display = '';
+      }
+    } 
+}
+adjustNavBar(); 
+
+document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(function() {
+    navBar.classList.add('fast');
+    menuIcon.classList.add('fast');
+    navBar.classList.remove('slow');
+    menuIcon.classList.remove('slow');
+  }, 8900);
+});
+
+
+window.addEventListener('resize', adjustNavBar);
+
+
+menuIcon.onclick = () => {
+  menuIcon.classList.toggle('bx-x'); 
+  navBar.classList.toggle('active');
+  navBar.classList.remove('slow'); 
+  navBar.classList.add('fast');
+}
+
+
+var items = document.querySelectorAll(".ed li, .view");
 
 function isElementInViewport(el){
     var rect = el.getBoundingClientRect();
    return (
-    rect.top >= 100 && 
+    rect.top >= 75 && 
     rect.left >= 0 &&
     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
@@ -63,105 +118,91 @@ window .addEventListener("load", callbackFunc);
 window.addEventListener("scroll", callbackFunc);
 
 // NEW PROJECT 
-
 document.addEventListener('DOMContentLoaded', () => {
-    const stickySection = document.querySelector('.sticky');
-    const scrollSection = stickySection.querySelector('.scroll_section');
-    const images = [
-      { src: '../imgs/malaria detection.png', title: 'Automated Malaria Detection', description: 'Image processing pipeline for quantification and stage categorization of P. vivax from blood smears.', link: 'https://github.com/jasmynlopez/Malaria-Detection-from-Blood-Smears' },
-      { src: '../imgs/heart tomography.png', title: 'Heart Abnormality Diagnosis', description: 'Diagnose heart abnormalities based on tomography using Logistic Regression', link: 'https://github.com/jasmynlopez/Heart-Abnorbmality-Diagnosis' },
-      { src: '../imgs/error analysis.png', title: 'Error Analysis in Digital Communication Systems', description: 'Exploring the bit error rate of filtering out different types of noise in both simulated and physical channels.', link: 'https://github.com/jasmynlopez/Digital-Communication-Error-Analysis' },
-      { src: '../imgs/Netflix Predictor.png', title: 'Love Actually Predictor', description: 'Given Netflix ratings, predict the probability that a user rates Love Actually 5 stars using Naive Bayes.', link: 'https://github.com/jasmynlopez/Naive-Bayes-Movie-Predictor' },
-      { src: '../imgs/calculator.png', title: 'Calculator Website', description: ' Aesthetic calculator with light and dark modes.', link: 'https://github.com/jasmynlopez/Calculator' }
-    ];
-  
-    images.forEach((img, index) => {
-      const projectCard = document.createElement('div');
-      projectCard.classList.add('project-card');
-  
-      projectCard.innerHTML = `
-        <div class="project-inner">
-          <div class="project-front">
-            <img src="${img.src}" alt="${img.title}">
-            <h2>${img.title}</h2>
-          </div>
-          <div class="project-back">
-            <p>${img.description}</p>
-            <a href="${img.link}" target="_blank">View on GitHub</a>
-          </div>
+  const carousel = document.querySelector('.carousel');
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
+
+  const images = [
+    { src: '../imgs/malaria detection.png', title: 'Automated Malaria Detection', description: 'Image processing pipeline for quantification and stage categorization of P. vivax from blood smears.', link: 'https://github.com/jasmynlopez/Malaria-Detection-from-Blood-Smears' },
+    { src: '../imgs/heart tomography.png', title: 'Heart Abnormality Diagnosis', description: 'Diagnose heart abnormalities based on tomography using Logistic Regression', link: 'https://github.com/jasmynlopez/Heart-Abnorbmality-Diagnosis' },
+    { src: '../imgs/error analysis.png', title: 'Error Analysis in Digital Communication Systems', description: 'Exploring the bit error rate of filtering out different types of noise in both simulated and physical channels.', link: 'https://github.com/jasmynlopez/Digital-Communication-Error-Analysis' },
+    { src: '../imgs/Netflix Predictor.png', title: 'Love Actually Predictor', description: 'Given Netflix ratings, predict the probability that a user rates Love Actually 5 stars using Naive Bayes.', link: 'https://github.com/jasmynlopez/Naive-Bayes-Movie-Predictor' },
+    { src: '../imgs/calculator.png', title: 'Calculator Website', description: ' Aesthetic calculator with light and dark modes.', link: 'https://github.com/jasmynlopez/Calculator' }
+  ];
+
+  let currentIndex = 0;
+  let intervalId;
+
+  function createCards() {
+  images.forEach((img, index) => {
+    const projectCard = document.createElement('div');
+    projectCard.classList.add('project-card');
+    if (index === 0) projectCard.classList.add('active'); // Only the first card is active initially
+
+    projectCard.innerHTML = `
+      <div class="project-inner">
+        <div class="project-front">
+          <img src="${img.src}" alt="${img.title}">
+          <h2>${img.title}</h2>
         </div>
-      `;
-  
-      scrollSection.appendChild(projectCard);
-    });
-  
-    window.addEventListener('scroll', () => {
-      transform();
-    });
-  
+        <div class="project-back">
+          <p>${img.description}</p>
+          <a href="${img.link}" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+    `;
 
-    function transform() {
-        const stickyOffset = stickySection.parentElement.offsetTop;
-        const maxScrollHeight = stickySection.parentElement.offsetHeight - window.innerHeight;
-        const maxTransform = scrollSection.scrollWidth - window.innerWidth;
-      
-        let percentage = ((window.scrollY - stickyOffset) / maxScrollHeight) * 100;
-        percentage = Math.min(Math.max(percentage, 0), 100);
-      
-        const translateX = (percentage / 100) * maxTransform;
-        scrollSection.style.transform = `translateX(-${translateX}px) translateY(-50%)`;
-      
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach((card) => {
-          const cardRect = card.getBoundingClientRect();
-          const centerX = window.innerWidth / 2;
-          const cardCenterX = cardRect.left + cardRect.width / 2;
-          const distance = Math.abs(centerX - cardCenterX);
-          const maxDistance = window.innerWidth * 0.31;
-          const centerY = window.innerHeight / 2;
-          const cardCenterY = cardRect.top + cardRect.width / 2;
-          const distY = Math.abs(centerY - cardCenterY);
-          const maxDistanceY = window.innerWidth * 0.03;
-      
-          // Horizontal fading logic
-          if (distance > maxDistance || distY > maxDistanceY) {
-            card.style.opacity = 0;
-            card.classList.remove('visible');
-          } else {
-            const opacity = 1 - (0.3 * (distance / maxDistance));
-            card.style.opacity = opacity;
-            card.classList.add('visible');
-          }
-        });
+    carousel.appendChild(projectCard);
+  });
+}
+
+  function showCard(index) {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, i) => {
+      if (i === index) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
       }
+    });
+  }
 
-    transform(); // Initial call to set positions and visibility
+  function nextCard() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showCard(currentIndex);
+  }
 
+  function prevCard() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showCard(currentIndex);
+  }
+
+  function startCarousel() {
+    intervalId = setInterval(nextCard, 2900);
+  }
+
+  function stopCarousel() {
+    clearInterval(intervalId);
+  }
+
+  createCards();
+  startCarousel();
+
+  carousel.addEventListener('mouseenter', stopCarousel);
+  carousel.addEventListener('mouseleave', startCarousel);
+
+  leftArrow.addEventListener('click', () => {
+    prevCard();
+    stopCarousel();
+    startCarousel();
   });
 
-
-  window.addEventListener('scroll', () => {
-    const stickyElement = document.getElementById('.proj-heading');
-    const stickyStop = 300; // Distance in pixels to stop being sticky
-  
-    if (window.scrollY > stickyStop) {
-      stickyElement.classList.remove('sticky');
-    } else {
-      stickyElement.classList.add('sticky');
-    }
+  rightArrow.addEventListener('click', () => {
+    nextCard();
+    stopCarousel();
+    startCarousel();
   });
-  
-
-  window.addEventListener('scroll', function() {
-    var projHeading = document.getElementById('projects');
-    var stickyPoint = 4300; // The scroll position in pixels where you want to start fading out
-    var scrollPosition = window.scrollY || window.pageYOffset;
-
-    if (scrollPosition > stickyPoint) {
-        projHeading.classList.add('fade-out');
-    } else {
-        projHeading.classList.remove('fade-out');
-    }
 });
 
 
