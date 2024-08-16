@@ -858,26 +858,27 @@ section.hide-start {
     }
 
     #big-name {
-        top: 50%;
-        transform: translate(-50%, -50%) scale(0.3); /* Smaller scale */
+        top: 6%;
+        left: 180px;
+        transform: translate(-50%, -50%) scale(0.3); 
     }
 
     @keyframes shrink-and-float {
         0% {
             transform: translate(-50%, -50%) scale(0.3);
-            top: 50%; 
-            left: 50%;
+            top: 6%; 
+            left: 180px;
         }
         100% {
-            transform: translate(0, 0) scale(0.25);
-            top: 0.6%;
+            transform: translate(0%, 0%) scale(0.25);
+            top: 0%;
             left: -360px;
         }
     }
 
     .logo {
-         top:6%;
-         left:-360px;
+         top: -0.6%; 
+         left: -360px; 
      }
 
      * {
@@ -891,6 +892,12 @@ section.hide-start {
         margin: 10px 0;
         font-size: 2rem;
       }
+
+      .project-front h2 {
+        font-size: 1.3rem;
+      }
+      
+
 
     
 }
