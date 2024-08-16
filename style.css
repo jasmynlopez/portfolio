@@ -860,25 +860,14 @@ section.hide-start {
     #big-name {
         top: 6%;
         left: 180px;
-        transform: translate(-50%, -50%) scale(0.3); 
-    }
-
-    @keyframes shrink-and-float {
-        0% {
-            transform: translate(-50%, -50%) scale(0.3);
-            top: 6%; 
-            left: 180px;
-        }
-        100% {
-            transform: translate(0%, 0%) scale(0.25);
-            top: 0%;
-            left: -360px;
-        }
+        animation: fill 0.5s ease forwards 4s; 
+        transform: translate(-50%, -50%) scale(0.25); 
     }
 
     .logo {
-         top: -0.6%; 
-         left: -360px; 
+         top: 1.75%; 
+         left: -327.7px;
+         transform: scale(0.25);
      }
 
      * {
