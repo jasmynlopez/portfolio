@@ -97,6 +97,7 @@ body {
     font-size: 3.6rem;
     color: var(--text-color);
     display: none;
+    z-index: 5;
 }
 
 section {
@@ -857,6 +858,12 @@ section.hide-start {
         padding: 10px 15px;
     }
 
+    .header {
+        height: 100px;
+        backdrop-filter: blur(10px);
+        -webkit-mask-image: linear-gradient(to top, transparent, black 50%);
+        mask-image: linear-gradient(to top, transparent, black 50%);
+    }
     #big-name {
         top: 6%;
         left: 150px;
