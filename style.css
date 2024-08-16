@@ -5,29 +5,28 @@
     text-decoration: none; 
     border: none; 
     outline: none; 
-    scroll-behavior: smooth;  /* for the most pleasant UX */
+    scroll-behavior: smooth;
     font-family: "Poppins", sans-serif; 
 }
 
 :root {
-    /* LIGHT MODE */
-    /* --bg-color: #fff;
-    --transparent-bg-color:rgba(255, 255, 255, 0.35);
-    --text-color: #000; */ 
-
     /* DARK MODE */
     --bg-color: #121212;
     --transparent-bg-color:rgba(18, 18, 18, 0.4);
-    --transparent-main-color:rgba(237, 199, 183, 0.4);
-    --text-color: #fff;
-    --main-color: #edc7b7;
-    --header-bg: #000;
-
+    --transparent-main-color:rgb(229, 203, 179, 0.4);
+    --text-color: rgb(244, 239, 235);
+    --main-color: #e5cbb3;
+    /* LIGHT MODE */
+    /* --bg-color: rgb(244, 239, 235);
+    --transparent-bg-color:rgba(244, 239, 235, 0.1);
+    --transparent-main-color:rgba(99, 153, 206, 0.4);
+    --text-color: #5D4037;
+    --main-color: #6399ce; */
     --card-width: 444px;
     --card-height: 540px;
     --card-padding: 24px;
-    --img-size: 420px; 
-}
+    --img-size: 420px;
+} 
 
 html {
     font-size: 50%;
@@ -37,8 +36,99 @@ body {
     background: var(--bg-color);
     color: var(--text-color);
 }
+/*  NAME ANIMATION FOR OPENING DISPLAY  **********************************************************************/
+#big-name path:nth-child(1) {
+    stroke-dasharray: 468.5;
+    stroke-dashoffset: 468.5;
+    animation: line-animation 2s ease forwards;
 
+}
+#big-name path:nth-child(2) {
+    stroke-dasharray: 483.9;
+    stroke-dashoffset: 483.9;
+    animation: line-animation 2s ease forwards 0.4s;
+}
+#big-name path:nth-child(3) {
+    stroke-dasharray: 449.7;
+    stroke-dashoffset: 449.7;
+    animation: line-animation 2s ease forwards 0.8s;
+}
+#big-name path:nth-child(4) {
+    stroke-dasharray: 565.9;
+    stroke-dashoffset: 565.9;
+    animation: line-animation 2s ease forwards 1.2s;
+}
+#big-name path:nth-child(5) {
+    stroke-dasharray: 317.2;
+    stroke-dashoffset: 317.2;
+    animation: line-animation 2s ease forwards 1.5s;
+}
 
+#big-name path:nth-child(6) {
+    stroke-dasharray: 606.5;
+    stroke-dashoffset: 606.5;
+    animation: line-animation 2s ease forwards 1.5s;
+}
+#big-name path:nth-child(7) {
+    stroke-dasharray: 392.2;
+    stroke-dashoffset: 392.2;
+    animation: line-animation 2s ease forwards 1.05s;
+}
+#big-name path:nth-child(8) {
+    stroke-dasharray: 739.7;
+    stroke-dashoffset: 739.7;
+    animation: line-animation 2s ease forwards 0.9s;
+}
+#big-name path:nth-child(9) {
+    stroke-dasharray: 513.7;
+    stroke-dashoffset: 513.7;
+    animation: line-animation 2s ease forwards 0.6s;
+}
+#big-name path:nth-child(10) {
+    stroke-dasharray: 483;
+    stroke-dashoffset: 483;
+    animation: line-animation 2s ease forwards 0.3s;
+}
+#big-name path:nth-child(11) {
+    stroke-dasharray: 332.8;
+    stroke-dashoffset: 332.8; 
+    animation: line-animation 2s ease forwards; 
+}
+
+.logo path {
+    stroke: var(--text-color);
+    fill: var(--text-color);
+}
+
+@keyframes line-animation {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill{
+    from {
+        fill: transparent;
+    }
+    to {
+        fill: var(--text-color);
+    }
+}
+
+@keyframes shrink-and-float {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        top: 45%; 
+        left: 50%;
+    }
+    100% {
+        transform: translate(0, 0) scale(0.25);
+        top: 0.6%;
+        left:-15%
+    }
+}
+
+/* HEADER ***********************************************************************************************************/
 .header {
     position: fixed;
     top: 0;
@@ -64,8 +154,8 @@ body {
     left:-15%;
     background: transparent;
     transition: all 300ms ease-in-out;
-
 }
+
 
 .logo:hover {
     transform: scale(0.284);
@@ -92,11 +182,23 @@ body {
     border-bottom: 2px solid var(--main-color);
 }
 
+.navbar .toggle-container {
+    font-size: 2.7rem; 
+    padding-top: 1%;
+    padding-left: 8%; 
+    color: var(--text-color);
+} 
+
+#toggle {
+    transition: transform 0.5s ease; 
+    cursor: pointer;
+}
+
 
 #menu-icon {
     font-size: 3.6rem;
     color: var(--text-color);
-    display: none;
+    display: none;  /* only visible at small screen widths*/
     z-index: 5;
 }
 
@@ -118,7 +220,7 @@ section {
     background-size: cover; 
     background-position: 85% center; 
     width: 100%; 
-    height: 100vh;  /* size of monitor*/
+    height: 100vh;  
     z-index: 1;
     margin: 0;
     padding: 0;
@@ -127,10 +229,10 @@ section {
 .home::after {
     content: '';
     position: absolute;
-    bottom: -50px; /* Adjust position to blend better */
+    bottom: -50px; 
     left: 0;
     width: 100%;
-    height: 150px; /* Adjust height of the blur */
+    height: 150px; 
     background: linear-gradient(to bottom, transparent, var(--bg-color));
     z-index: 2;
 
@@ -241,7 +343,7 @@ span {
 
 .begin-name {
     width: 100%; 
-    height: 100vh;  /* size of monitor*/
+    height: 100vh;  
     z-index: 105;
     margin: 0;
     padding: 0;
@@ -256,110 +358,17 @@ span {
     top: 45%; 
     left: 50%;
     transform: translate(-50%, -50%); 
-    animation: fill 0.5s ease forwards 4s, shrink-and-float 2s ease-in-out forwards 4.8s; 
+    animation: fillColor 0.5s ease forwards 4s, shrink-and-float 2s ease-in-out forwards 4.8s; 
 }
 
-#big-name path:nth-child(1) {
-    stroke-dasharray: 468.5;
-    stroke-dashoffset: 468.5;
-    animation: line-animation 2s ease forwards;
-
-}
-#big-name path:nth-child(2) {
-    stroke-dasharray: 483.9;
-    stroke-dashoffset: 483.9;
-    animation: line-animation 2s ease forwards 0.4s;
-}
-#big-name path:nth-child(3) {
-    stroke-dasharray: 449.7;
-    stroke-dashoffset: 449.7;
-    animation: line-animation 2s ease forwards 0.8s;
-}
-#big-name path:nth-child(4) {
-    stroke-dasharray: 565.9;
-    stroke-dashoffset: 565.9;
-    animation: line-animation 2s ease forwards 1.2s;
-}
-#big-name path:nth-child(5) {
-    stroke-dasharray: 317.2;
-    stroke-dashoffset: 317.2;
-    animation: line-animation 2s ease forwards 1.5s;
-}
-
-#big-name path:nth-child(6) {
-    stroke-dasharray: 606.5;
-    stroke-dashoffset: 606.5;
-    animation: line-animation 2s ease forwards 1.5s;
-}
-#big-name path:nth-child(7) {
-    stroke-dasharray: 392.2;
-    stroke-dashoffset: 392.2;
-    animation: line-animation 2s ease forwards 1.05s;
-}
-#big-name path:nth-child(8) {
-    stroke-dasharray: 739.7;
-    stroke-dashoffset: 739.7;
-    animation: line-animation 2s ease forwards 0.9s;
-}
-#big-name path:nth-child(9) {
-    stroke-dasharray: 513.7;
-    stroke-dashoffset: 513.7;
-    animation: line-animation 2s ease forwards 0.6s;
-}
-#big-name path:nth-child(10) {
-    stroke-dasharray: 483;
-    stroke-dashoffset: 483;
-    animation: line-animation 2s ease forwards 0.3s;
-}
-#big-name path:nth-child(11) {
-    stroke-dasharray: 332.8;
-    stroke-dashoffset: 332.8;
-    animation: line-animation 2s ease forwards; 
-}
-
-@keyframes line-animation {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-@keyframes fill{
+@keyframes fillColor {
     from {
-        fill: transparent;
+        fill: transparent
     }
     to {
-        fill: var(--text-color);
+        fill: white; 
     }
 }
-
-@keyframes shrink-and-float {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        top: 45%; 
-        left: 50%;
-    }
-    100% {
-        transform: translate(0, 0) scale(0.25);
-        top: 0.6%;
-        left:-15%
-    }
-}
-
-@keyframes disapear {
-    to {
-        display: none;
-    }
-}
-
-@keyframes appear {
-    from {
-        display: none;
-    }
-    to {
-        display: flex;
-    }
-}
-
 
 .title-hidden {
     opacity: 0; 
@@ -371,6 +380,7 @@ span {
     animation: 2.2s fade-in-img 4.8s ease-in-out forwards;
 }
 
+/* NAVIGATION BAR ANIMATION */
 .nav-hidden.slow :nth-child(1){
     opacity: 0; 
     animation: 1s fade-in-nav 8.3s forwards; 
@@ -387,7 +397,6 @@ span {
     opacity: 0; 
     animation: 1s fade-in-nav 8.9s forwards; 
 }
-
 .nav-hidden.fast :nth-child(1){
     opacity: 0; 
     animation: 1s fade-in-nav 0.1s forwards; 
@@ -404,6 +413,7 @@ span {
     opacity: 0; 
     animation: 1s fade-in-nav 0.7s forwards; 
 }
+/* ANIMATION ON STARTING HOME DISPLAY*/
 
 .hello-hidden {
     opacity: 0; 
@@ -414,7 +424,6 @@ span {
     opacity: 0;
     animation: 2s fade-in-typing 6s forwards; 
 }
-
 
 .remove-lander {
     animation: 0.5s fade-out 6.9s forwards; 
@@ -441,7 +450,7 @@ span {
     animation: 2s fade-in-bio 7.5s forwards;
 }
 
-/* Home Screen Transitions */
+/* HOME SCREEN TRANSITIONS */
 @keyframes fade-in-btn {
     from {
         opacity: 0;
@@ -465,7 +474,6 @@ span {
         transform: translateX(0%);
     }
 }
-
 
 @keyframes fade-in {
     from {
@@ -498,13 +506,11 @@ span {
     }
 }
 
-
 @keyframes fade-out {
     to {
         display: none;
     }
 }
-
 
 @keyframes fade-in-nav {
     from {
@@ -532,7 +538,6 @@ span {
     }
 }
 
-
 @keyframes fade-in-typing {
     from {
         opacity: 0;
@@ -556,8 +561,8 @@ span {
 section.hide-start {
     display: none;
 }
-
-@media (max-width: 1200px) {
+/* CONTENT RESIZING ON DIFFERENT DISPLAY SIZES *******************************************************************/
+@media (max-width: 1200px) {  /* 1200 PIXELS **************************/
     .home-content {
         margin-left: -10%;
     }
@@ -578,31 +583,26 @@ section.hide-start {
          top:6%;
          left:-270px;
      }
- 
 }
-/* HOME DISPLAY ON DIFFERENT SCREEN SIZES */
-/* General responsive adjustments */
-@media (max-width: 1125px) {
-    /* Adjust the SVG size */
+
+@media (max-width: 1125px) {   /* 1125 PIXELS **************************/
     #big-name {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0.6); /* Adjust the scale */
+        transform: translate(-50%, -50%) scale(0.6);
     }
 
-    /* Adjust home-content for smaller screens */
     .home-content h1 {
-        
-        font-size: 4rem; /* Reduce font size */
+        font-size: 4rem; 
     }
 
     .home-content h3 {
-        font-size: 2rem; /* Reduce font size */
+        font-size: 2rem;
     }
 
     .home-content p {
-        font-size: 1.2rem; /* Reduce font size */
-        max-width: 80%; /* Adjust max width */
+        font-size: 1.2rem;
+        max-width: 80%; 
     }
 
     .home-content {
@@ -638,6 +638,7 @@ section.hide-start {
         display: none;
         max-width: 50%;
     }
+
     .navbar.active {
         display: block; 
         opacity: 1;
@@ -651,6 +652,10 @@ section.hide-start {
         color: var(--text-color);
     }
 
+    .navbar .toggle-container {
+        margin-top: -3rem;
+        padding-bottom: 3rem;
+    }
 
     @keyframes shrink-and-float {
         0% {
@@ -664,6 +669,7 @@ section.hide-start {
             left: -320px;
         }
     }
+
     .logo {
          top:6%;
          left:-320px;
@@ -724,10 +730,9 @@ section.hide-start {
         font-size: 1.5rem; 
         max-width: 69%; 
     }
-
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) { /* 900 PIXELS ***************************/
     .home-content {
         margin-left: 10%;
         margin-top: -2%;
@@ -744,7 +749,6 @@ section.hide-start {
         font-size: 1.5rem; 
         max-width: 68%; 
     }
-
 }
 
 @media (max-width: 850px) {
@@ -762,7 +766,7 @@ section.hide-start {
 
     .home-content p {
         font-size: 1.5rem; 
-        max-width: 67%; /* Adjust max width */
+        max-width: 67%; 
     }
 
     * {
@@ -782,10 +786,9 @@ section.hide-start {
     .project-back a {
         font-size: 1.6rem; 
     }
-    
 }
 
-@media (max-width: 700px) {
+@media (max-width: 700px) { /* 700 PIXELS ***************************/
     .home-content {
         margin-left: 7%;
         margin-top: -13%;
@@ -800,17 +803,14 @@ section.hide-start {
 
     .home-content p {
         font-size: 1.5rem; 
-        max-width: 60%; /* Adjust max width */
+        max-width: 60%; 
     }
-
 }
 
-/* Even smaller screens */
-@media (max-width: 580px) {
-    /* Further adjustments */
+@media (max-width: 580px) {  /* 580 PIXELS ***************************/
     #big-name {
         top: 50%;
-        transform: translate(-50%, -50%) scale(0.4); /* Smaller scale */
+        transform: translate(-50%, -50%) scale(0.4); 
     }
 
     @keyframes shrink-and-float {
@@ -839,20 +839,26 @@ section.hide-start {
     .auto-type {
         font-size: 2.5rem;
     }
+
     .home-content h1 {
         font-size: 4rem; 
     }
 
     .home-content p {
         font-size: 1.5rem; 
-        max-width: 50%; /* Adjust max width */
+        max-width: 50%; 
     }
+
     .home-content {
         margin-left: 5%;
     }
+    
+    menu-icon {
+        display: block; 
+    }
 }
 
-@media (max-width: 475px) {
+@media (max-width: 475px) {  /* 475 PIXELS(MOBILE) ***************************/
     .ed-box {
         width: 95%;
         padding: 10px 15px;
@@ -864,11 +870,16 @@ section.hide-start {
         -webkit-mask-image: linear-gradient(to top, transparent, black 50%);
         mask-image: linear-gradient(to top, transparent, black 50%);
     }
+
     #big-name {
         top: 6%;
         left: 150px;
-        animation: fill 0.5s ease forwards 4s; 
+        animation: fillColor 0.5s ease forwards 4s; 
         transform: translate(-50%, -50%) scale(0.25); 
+    }
+
+    #big-name path {
+        color: var(--text-color); 
     }
 
     .remove-lander {
@@ -899,12 +910,12 @@ section.hide-start {
         display: none; 
       }
       
-
-
-    
+      .footer ul {
+        font-size: 15px; 
+      }
 }
 
-/* END HOME SECTION */
+/* END HOME SECTION ******************************************************************************/
 
 
 /* START EDUCATION SECTION ***********************************************************************/
@@ -940,7 +951,6 @@ section.hide-start {
     margin-bottom: 40px; 
     width: 100%; 
     position: relative; 
-    /* NEW */
     opacity: 1;
     transition: opacity 2s ease, transform 3s ease;
 }
@@ -1004,7 +1014,6 @@ section.hide-start {
     border-radius: 5px; 
 }
 
-
 .ed-date {
     opacity: 0;
     font-size: 20px; 
@@ -1052,7 +1061,6 @@ section.hide-start {
     opacity: 1;
 }
 
-
 .in-view {
     visibility: visible; 
     opacity: 1; 
@@ -1072,8 +1080,7 @@ section.hide-start {
     }
 }
 
-
-@media (max-width: 778px) {
+@media (max-width: 778px) { /* EDUCATION REFORMAT ON RESIZE */
     .ed ul {
         display: flex;
         flex-direction: column;
@@ -1084,14 +1091,13 @@ section.hide-start {
     }
     
     .ed ul li {
-        width: 80%; /* Adjust this value to control the width of your content boxes */
-        margin: 1rem 0; /* Space between the boxes */
+        width: 80%; 
+        margin: 1rem 0; 
         text-align: center;
         margin-left: 0;
         margin-right: 0;
     }
 
-    /* Override the alternating left-right alignment */
     .ed ul li:nth-child(odd),
     .ed ul li:nth-child(even) {
         justify-content: center;
@@ -1159,7 +1165,7 @@ projects-section {
     transition: transform 0.8s;
     border-radius: 10px;
     background-color: var(--bg-color);
-    box-shadow: 0 0 20px var(--main-color);
+    box-shadow: 0 0 10px 2px var(--main-color);
   }
   
   .project-card:hover .project-inner {
