@@ -859,15 +859,17 @@ section.hide-start {
 
     #big-name {
         top: 6%;
-        left: 180px;
+        left: 150px;
         animation: fill 0.5s ease forwards 4s; 
         transform: translate(-50%, -50%) scale(0.25); 
     }
 
+    .remove-lander {
+        animation: none;
+    }
+
     .logo {
-         top: 1.75%; 
-         left: -327.7px;
-         transform: scale(0.25);
+         display:none; 
      }
 
      * {
