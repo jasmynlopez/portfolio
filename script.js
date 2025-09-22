@@ -137,11 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const rightArrow = document.querySelector('.right-arrow');
 
   const images = [
-    { src: '../imgs/malaria detection.png', title: 'Automated Malaria Detection', description: 'Image processing pipeline for quantification and stage categorization of P. vivax from blood smears.', link: 'https://github.com/jasmynlopez/Malaria-Detection-from-Blood-Smears' },
-    { src: '../imgs/heart tomography.png', title: 'Heart Abnormality Diagnosis', description: 'Diagnose heart abnormalities based on tomography using Logistic Regression', link: 'https://github.com/jasmynlopez/Heart-Abnorbmality-Diagnosis' },
-    { src: '../imgs/error analysis.png', title: 'Error Analysis in Digital Communication Systems', description: 'Exploring the bit error rate of filtering out different types of noise in both simulated and physical channels.', link: 'https://github.com/jasmynlopez/Digital-Communication-Error-Analysis' },
-    { src: '../imgs/Netflix Predictor.png', title: 'Love Actually Predictor', description: 'Given Netflix ratings, predict the probability that a user rates Love Actually 5 stars using Naive Bayes.', link: 'https://github.com/jasmynlopez/Naive-Bayes-Movie-Predictor' },
-    { src: '../imgs/calculator.png', title: 'Calculator Website', description: ' Aesthetic calculator with light and dark modes.', link: 'https://github.com/jasmynlopez/Calculator' }
+    { src: 'imgs/malaria detection.png', title: 'Automated Malaria Detection', description: 'Image processing pipeline for quantification and stage categorization of P. vivax from blood smears.', link: 'https://github.com/jasmynlopez/Malaria-Detection-from-Blood-Smears' },
+    { src: 'imgs/heart tomography.png', title: 'Heart Abnormality Diagnosis', description: 'Diagnose heart abnormalities based on tomography using Logistic Regression', link: 'https://github.com/jasmynlopez/Heart-Abnorbmality-Diagnosis' },
+    { src: 'imgs/error analysis.png', title: 'Error Analysis in Digital Communication Systems', description: 'Exploring the bit error rate of filtering out different types of noise in both simulated and physical channels.', link: 'https://github.com/jasmynlopez/Digital-Communication-Error-Analysis' },
+    { src: 'imgs/Netflix Predictor.png', title: 'Love Actually Predictor', description: 'Given Netflix ratings, predict the probability that a user rates Love Actually 5 stars using Naive Bayes.', link: 'https://github.com/jasmynlopez/Naive-Bayes-Movie-Predictor' },
+    { src: 'imgs/calculator.png', title: 'Calculator Website', description: ' Aesthetic calculator with light and dark modes.', link: 'https://github.com/jasmynlopez/Calculator' }
   ];
 
   let currentIndex = 0;
